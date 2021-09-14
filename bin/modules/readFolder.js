@@ -16,10 +16,10 @@ module.exports.readFolder = function (path, cssLink, outputContainer) {
         outputContainer
       );
 
+      var url = `./${encodeURI(fileName)}.html`;
+
       // index.html body
-      body += `<h5><a href={${path}/${encodeURI(
-        fileName
-      )}.html}>${fileName}</h5>\n`;
+      body += `<h5><a href=\"${url}\">${fileName}</h5>\n`;
     });
 
     // create index.html
