@@ -19,14 +19,14 @@ module.exports.readFolder = function (path, cssLink, outputContainer) {
       var url = `./${encodeURI(fileName)}.html`;
 
       // index.html body
-      body += `<h5><a href=\"${url}\">${fileName}</h5>\n`;
+      body += `<h3><a href=\"${url}\">${fileName}</h3>\n`;
     });
 
     // create index.html
     html.generateHTML(
       "index",
       cssLink,
-      `<h4>Generated Sites</h4>\n${body}`,
+      `<h2>Generated Sites</h2>\n${body}`,
       outputContainer
     );
   });
