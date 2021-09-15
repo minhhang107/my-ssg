@@ -1,10 +1,18 @@
 # my-ssg
 My Static Site Generator, is a command line tool, created to convert `.txt` into a `.html` file by using Node.js.
 
+## Installation
+```
+1. Clone this repo
+2. cd my-ssg
+3. npm i
+4. cd my-ssg/bin
+```
+
 ## Features
-* Allows user to specify a URL to a `CSS stylesheet` if they hope to
-* If users' input is a folder, an `index.html` file will be generated automatically and linked to other generated HTML files.
-* All generated HTML files will be stored in `./dist` folder which is created by default
+* Allows user to specify a URL to a `CSS stylesheet` if they hope to.
+* Creates an `index.html` file which links to other generated HTML files if a folder is specified as input.
+* Stores all generated HTML files in `./dist` folder by default.
 
 ## Options
 Option | Function
