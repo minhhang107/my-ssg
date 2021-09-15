@@ -1,17 +1,20 @@
 const fs = require("fs");
 var fileModule = require("./readFile");
 var html = require("./generateHTML");
+var path = require("path");
 var body = "";
 
-module.exports.readFolder = function (path, cssLink, outputContainer) {
-  fs.readdir(path, function (err, files) {
+module.exports.readFolder = function (inputPath, cssLink, outputContainer) {
+  fs.readdir(inputPath, function (err, files) {
     if (err) {
       return console.log(err);
     }
 
-    files.forEach(function (file) {
+    var sortedFile = files.filter(file => path.extname(`${inputPath}/${file}`) === ".txt");
+    sortedFile.forEach(function (file) {
+
       var fileName = fileModule.readFile(
-        `${path}/${file}`,
+        `${inputPath}/${file}`,
         cssLink,
         outputContainer
       );
