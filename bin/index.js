@@ -9,11 +9,11 @@ const chalk = require("chalk");
 var cssLink = "";
 
 const argv = require("yargs")
-  .usage("Usage: $0 --input <'filename'>  [-s <'css-link'>]")
+  .usage("Usage: $0 --input <filename>  [-s <css-link>]")
   .option("i", {
     alias: "input",
     describe: ".txt file name",
-    type: "string",
+    type: "array",
     demandOption: true,
   })
   .option("s", {
@@ -23,12 +23,12 @@ const argv = require("yargs")
     type: "string",
     demandOption: false,
   })
-  .option("o", {
-    alias: "output",
-    describe: "store output directory",
-    type: "string",
-    demandOption: false,
-  })
+  // .option("o", {
+  //   alias: "output",
+  //   describe: "store output directory",
+  //   type: "string",
+  //   demandOption: false,
+  // })
   .alias("v", "version")
   .version(pjson.name + " " + pjson.version)
   .alias("h", "help")
@@ -54,16 +54,16 @@ if (!fs.existsSync(htmlContainer)) {
 }
 
 // check input path status
-fs.stat(argv.input, (err, stats) => {
+fs.stat(argv.input.join(" "), (err, stats) => {
   if (err) {
     console.error(err);
     return;
   }
 
   if (stats.isDirectory()) {
-    folder.readFolder(argv.input, cssLink, htmlContainer);  // folder
-  } else if (stats.isFile() && path.extname(argv.input) === ".txt") {
-    file.readFile(argv.input, cssLink, htmlContainer);      // file
+    folder.readFolder(argv.input.join(" "), cssLink, htmlContainer);  // folder
+  } else if (stats.isFile() && path.extname(argv.input.join(" ")) === ".txt") {
+    file.readFile(argv.input.join(" "), cssLink, htmlContainer);      // file
   } else {
     console.log("Invalid file extension, it should be .txt");
   }
